@@ -1,0 +1,530 @@
+1. Node.js Introduction
+What is Node.js?
+Node.js vs Browser JavaScript
+Node.js Architecture
+V8 JavaScript Engine
+Event-Driven, Non-blocking I/O
+Installation and Setup
+Node.js REPL
+Running Node.js Applications
+Node.js vs Other Backend Technologies
+
+2. Node.js Environment
+Global Objects (global, process, console, Buffer)
+Command Line Arguments
+Environment Variables
+Process Object
+OS Module
+Path Module
+URL Module
+Timers (setTimeout, setInterval, setImmediate)
+
+3. Modules and Module System
+CommonJS Modules
+module.exports vs exports
+require() Function
+Module Caching
+Core Modules vs Local Modules vs Third-party Modules
+ES6 Modules (import/export)
+Module Resolution Algorithm 
+Circular Dependencies
+
+
+
+Answers:
+
+1) Node.js ek JavaScript runtime environment hai
+jo JavaScript ko browser ke bahar run karne deta hai.
+
+Normally JavaScript sirf browser me run hoti thi:
+Chrome
+Firefox
+Edge
+But Node.js ki help se hum JavaScript ko:
+Server par
+Backend me
+Terminal me
+APIs banane ke liye
+Database connect karne ke liye
+use kar sakte hain.
+
+Q1. What is Node.js?
+
+Node.js is a JavaScript runtime environment used to run JavaScript outside the browser.
+
+Q2. Is Node.js a programming language?
+
+No. It is a runtime environment.
+
+Q3. Why is Node.js fast?
+
+Because it uses Chrome’s V8 engine and non-blocking architecture.
+
+Q4. Can we use DOM in Node.js?
+No.
+Because DOM browser ka part hai.
+
+
+
+
+2) Browser JavaScript
+
+Browser ke andar run hoti hai.
+
+Example:
+
+Chrome
+Firefox
+Edge
+
+Mainly frontend ke liye use hoti hai.
+
+Node.js
+
+Browser ke bahar run hoti hai.
+Mainly backend/server side ke liye use hoti hai.
+
+Q1. Can we use document in Node.js?
+
+❌ No.
+
+Because Node.js me DOM nahi hota.
+
+Q2. Can we access filesystem in browser JS?
+
+Normally ❌ No.
+
+Security reasons.
+
+Q3. What is the global object in browser?
+
+window
+
+Q4. What is the global object in Node.js?
+
+global
+
+
+
+
+3) Node.js architecture is:
+
+Single-threaded, event-driven, non-blocking architecture.
+
+Ab ye teen words samajhna bahut important hai:
+
+Single Threaded
+Event Driven
+Non Blocking I/O
+
+Q1. Why is Node.js single-threaded?
+
+To reduce memory usage and improve scalability.
+
+Q2. How does Node.js handle multiple requests?
+
+Using event loop and async non-blocking architecture.
+
+Q3. What is Event Loop?
+
+It continuously checks callback queue and executes completed async tasks.
+
+Q4. Why Node.js is fast?
+
+Because of:
+
+V8 engine
+Non-blocking I/O
+Event-driven architecture
+Q5. What tasks use thread pool?
+File system
+Crypto
+Compression
+DNS
+
+
+4) V8 Engine Kya Hai?
+
+V8 ek JavaScript engine hai
+jo JavaScript code ko machine code me convert karta hai.
+Originally:
+✅ Chrome browser me
+
+Baad me:
+✅ Node.js me bhi use hua
+Q1. What is V8 Engine?
+
+V8 is Google’s JavaScript engine that converts JavaScript into machine code.
+
+Q2. Why Node.js is fast?
+
+Because it uses the V8 engine and non-blocking architecture.
+
+Q3. What is JIT Compilation?
+
+Just-In-Time compilation converts code into machine code during runtime.
+
+Q4. Who developed V8?
+
+Google.
+
+Q5. Does V8 execute JavaScript line by line?
+
+Not exactly.
+
+It uses interpreter + compiler combination.
+
+
+
+
+Tumse pucha ja sakta hai:
+
+Why choose Node.js?
+Difference between Node.js and PHP?
+Node.js vs Java?
+Node.js vs Python?
+When should we use Node.js?
+
+Aaj hum sab properly samjhenge.
+
+Pehle Samjho
+
+Backend technologies ka kaam hota hai:
+
+✅ Server banana
+✅ APIs banana
+✅ Database handle karna
+✅ Authentication
+✅ Business logic
+
+Different technologies same kaam kar sakti hain.
+
+Example:
+
+Node.js
+Java
+Python
+PHP
+C#
+Go
+Most Popular Backend Technologies
+Technology	Language
+Node.js	JavaScript
+Spring Boot	Java
+Django	Python
+Laravel	PHP
+ASP.NET	C#
+Go	Go
+1. Node.js vs Java Backend
+Java Backend
+
+Usually:
+
+Spring Boot
+Multithreaded
+Enterprise systems
+
+Use hota hai.
+
+Node.js
+JavaScript based
+Event-driven
+Non-blocking
+Architecture Difference
+Java
+1 Request = 1 Thread
+Node.js
+Many Requests = Single Event Loop
+Java Advantages
+
+✅ Better for CPU heavy apps
+✅ Enterprise level stability
+✅ Strong typing
+✅ Huge banking usage
+
+Node.js Advantages
+
+✅ Faster development
+✅ Same language frontend/backend
+✅ Great for APIs & realtime apps
+✅ Lightweight
+
+Performance
+Task	Better
+CPU Heavy	Java
+Real-time Apps	Node.js
+APIs	Node.js
+Enterprise Banking	Java
+Example
+Java Good For
+Banking systems
+ERP
+Heavy enterprise apps
+Node.js Good For
+Chat apps
+Streaming
+APIs
+Real-time systems
+2. Node.js vs Python
+
+Python backend mostly:
+
+Django
+Flask
+FastAPI
+Python Advantages
+
+✅ Easy syntax
+✅ AI/ML ecosystem
+✅ Data science support
+
+Node.js Advantages
+
+✅ Faster I/O operations
+✅ Better real-time handling
+✅ Full-stack JavaScript
+
+Speed Comparison
+
+Generally:
+
+Node.js faster for async I/O
+Python slower comparatively
+Example
+Python Good For
+AI
+Machine Learning
+Data analysis
+Node.js Good For
+Realtime applications
+APIs
+Streaming apps
+Syntax Comparison
+Python
+print("Hello")
+Node.js
+console.log("Hello")
+3. Node.js vs PHP
+
+PHP bahut purani backend technology hai.
+
+Frameworks:
+
+Laravel
+CodeIgniter
+PHP Advantages
+
+✅ Shared hosting support
+✅ Easy deployment
+✅ Huge CMS ecosystem
+
+Node.js Advantages
+
+✅ Modern async architecture
+✅ Faster realtime support
+✅ Better scalability
+
+Architecture Difference
+PHP
+
+Mostly synchronous request handling.
+
+Node.js
+
+Async non-blocking.
+
+Realtime Apps
+Technology	Realtime Support
+PHP	Difficult
+Node.js	Excellent
+Example
+PHP Good For
+WordPress
+CMS websites
+Node.js Good For
+Chat apps
+Live notifications
+APIs
+4. Node.js vs Go
+
+Go modern backend language hai.
+
+Go Advantages
+
+✅ Extremely fast
+✅ Goroutines
+✅ Better concurrency
+
+Node.js Advantages
+
+✅ Easier ecosystem
+✅ JavaScript everywhere
+✅ Faster development
+
+Performance
+
+Go often faster hota hai CPU tasks me.
+
+But Node.js development faster hota hai.
+
+5. Node.js vs C# (.NET)
+
+Microsoft ecosystem backend.
+
+Framework:
+
+ASP.NET
+C# Advantages
+
+✅ Enterprise support
+✅ Strong tooling
+✅ Large-scale applications
+
+Node.js Advantages
+
+✅ Lightweight
+✅ Faster prototyping
+✅ Huge npm ecosystem
+
+Biggest Advantage of Node.js
+
+🔥 Full Stack JavaScript
+
+Frontend:
+
+React
+
+Backend:
+
+Node.js
+
+Same language everywhere.
+
+Example MERN Stack
+MongoDB
+Express
+React
+Node.js
+
+Single language = JavaScript.
+
+Real-Time Capability
+
+Node.js realtime apps me king mana jata hai 👑
+
+Because:
+
+✅ WebSockets
+✅ Event-driven architecture
+✅ Non-blocking I/O
+
+Examples
+Chat apps
+Gaming servers
+Live notifications
+Collaboration tools
+Scalability Comparison
+Technology	Scalability
+Node.js	High
+Java	Very High
+Python	Medium
+PHP	Medium
+Development Speed
+Technology	Speed
+Node.js	Fast
+Python	Fast
+Java	Slower
+C#	Medium
+Learning Curve
+Technology	Difficulty
+Node.js	Easy-Medium
+Python	Easy
+Java	Harder
+Go	Medium
+Community & Ecosystem
+
+Node.js ka npm ecosystem bahut huge hai 🔥
+
+npm install package-name
+
+Millions of packages available.
+
+Popular Companies
+Node.js
+Netflix
+LinkedIn
+Uber
+Java
+Banking companies
+Enterprise corporations
+Python
+Instagram
+AI companies
+When NOT to Use Node.js
+
+Node.js best nahi hai for:
+
+❌ Heavy CPU calculations
+❌ AI/ML processing
+❌ Large scientific computations
+
+Because event loop block ho sakta hai.
+
+When to Use Node.js
+
+Best for:
+
+✅ APIs
+✅ Realtime apps
+✅ Streaming
+✅ Chat systems
+✅ Full-stack JavaScript apps
+✅ Microservices
+
+Simple Comparison Table
+Feature	Node.js	Java	Python	PHP
+Language	JS	Java	Python	PHP
+Speed	Fast	Fast	Medium	Medium
+Realtime	Excellent	Good	Medium	Weak
+Learning	Easy	Harder	Easy	Easy
+Scalability	High	Very High	Medium	Medium
+CPU Tasks	Weak	Strong	Medium	Weak
+Interview Questions
+Q1. Why choose Node.js?
+
+Because of:
+
+Non-blocking architecture
+Fast APIs
+Real-time support
+Same language frontend/backend
+Q2. Node.js vs Java?
+Node.js	Java
+Single-threaded	Multithreaded
+Fast development	Enterprise stability
+Q3. Why Node.js good for realtime apps?
+
+Because of event-driven and non-blocking architecture.
+
+Q4. Is Node.js better than Python?
+
+Depends on use case.
+
+AI → Python
+Realtime/API → Node.js
+Super Important Summary
+Node.js Strengths
+
+✅ Fast development
+✅ Real-time support
+✅ Async architecture
+✅ JavaScript everywhere
+
+Weaknesses
+
+❌ CPU heavy tasks
+❌ Event loop blocking
+
+One-Line Revision
+
+👉 Node.js is preferred for fast, scalable, real-time backend applications, while other backend technologies like Java, Python, and Go may be better suited for enterprise systems, AI, or CPU-intensive workloads depending on the use case.
