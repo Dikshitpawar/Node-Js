@@ -1,0 +1,101 @@
+// Task: Build a TODO REST API using Node.js HTTP Module
+// Objective:
+// Build a simple TODO backend server using Node.js core modules to demonstrate understanding of:
+// HTTP Module
+// Request & Response Handling
+// HTTP Methods
+// URL Routing
+// Status Codes
+// Headers
+// File Handling
+
+// Requirements:
+// 1. Add Todo
+// Route:
+// POST /todo
+// Accept JSON body:
+// {
+// "task": "Learn Node.js"
+// }
+// Requirements:
+// Add todo dynamically
+// Store todo inside todos.json
+// Default completed value should be false
+// Example Stored Data:
+// [
+// {
+// "id": 1,
+// "task": "Learn Node.js",
+// "completed": false
+// }
+// ]
+// Response:
+// {
+// "message": "Todo created successfully"
+// }
+// Status Code:
+// 201
+
+// 2. Get All Todos
+// Route:
+// GET /todos
+// Response Example:
+// [
+// {
+// "id": 1,
+// "task": "Learn Node.js",
+// "completed": false
+// }
+// ]
+// Status Code:
+// 200
+
+// 3. Get Single Todo
+// Route:
+// GET /todo?id=1
+// Requirements:
+// Return single todo using query parameter
+// Response Example:
+// {
+// "id": 1,
+// "task": "Learn Node.js",
+// "completed": false
+// }
+// If todo not found:
+// Return 404 status code.
+
+// 4. Update Todo
+// Route:
+// PUT /todo?id=1
+// Accept JSON body:
+// {
+// "completed": true
+// }
+// Requirements:
+// Update completed status
+// Response:
+// {
+// "message": "Todo updatzed successfully"
+// }
+
+// 5. Delete Todo
+// Route:
+// DELETE /todo?id=1
+// Requirements:
+// Delete todo from todos.json
+// Response:
+// {
+// "message": "Todo deleted successfully"
+// }
+
+// 6. Headers
+// Set proper headers:
+// Content-Type:
+// application/json
+
+// 7. Status Codes
+// Use:
+// 200 → Success
+// 201 → Created
+// 404 → Not Found
+// 500 → Internal Server Error

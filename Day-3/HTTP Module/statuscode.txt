@@ -1,0 +1,7 @@
+Status code:
+200 :- Ok
+201 :- created new source
+400 :- Bad request
+401 :- unauthorized
+404 :- not found
+505 : Internal server Error
