@@ -1,0 +1,10 @@
+Hello Node.js Streams
+Streams help process large amounts of data efficiently.
+Readable streams are used for reading data.
+Writable streams are used for writing data.
+Transform streams can modify data while passing it through.
+Duplex streams can both read and write data.
+Node.js streams improve memory efficiency.
+Learning streams is important for backend development.
+Practice makes concepts stronger.
+Keep coding and keep learning.
