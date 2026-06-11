@@ -1,0 +1,50 @@
+Node.js is a powerful runtime environment.
+Buffers help handle binary data efficiently.
+Streams allow data to be processed in chunks.
+File handling is an important part of backend development.
+This project reads a file using Node.js streams.
+Each chunk of data is stored in memory temporarily.
+The size of each chunk can be measured in bytes.
+Buffers are useful when working with files.
+Text data can be converted into different encodings.
+Base64 encoding is often used for data transfer.
+Hex encoding represents data using hexadecimal values.
+UTF-8 is a common character encoding format.
+A text file contains characters, words, and lines.
+Counting words helps analyze the file content.
+Counting lines helps understand the file structure.
+The total byte count shows the file size.
+Streams are memory efficient for large files.
+Node.js provides the fs module for file operations.
+Readable streams are used to read data from files.
+Writable streams are used to write data to files.
+The data event is triggered when a chunk is received.
+The end event is triggered when reading is complete.
+Error handling is important in file processing.
+A buffer stores raw binary data in Node.js.
+The Buffer class is available globally in Node.js.
+File content can be converted to a string.
+The string can then be analyzed using JavaScript.
+Whitespace can be used to separate words.
+Newline characters can be used to count lines.
+Empty lines should be handled carefully.
+The output file should include all analysis results.
+The program should display total characters.
+The program should display total words.
+The program should display total lines.
+The program should display total bytes.
+The encoded content should be written clearly.
+Base64 output may look different from normal text.
+Hex output contains numbers and letters from A to F.
+UTF-8 output should look like the original text.
+This exercise improves understanding of buffers.
+This exercise also improves knowledge of streams.
+Node.js is commonly used for server-side applications.
+Efficient file reading is useful in real projects.
+Large files should not always be loaded at once.
+Streams solve this problem by reading chunks.
+Buffers make it possible to work with raw data.
+Encoding is useful for storage and communication.
+A good output file should be easy to read.
+Testing the program helps find mistakes early.
+This is the final line of the input file.
