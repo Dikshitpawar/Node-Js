@@ -1,0 +1,8 @@
+Multer : Multer is a middleware for handling multipart/form-data, a commonly used format for uploading files in web applications
+
+upload.single('file'): This middleware processes a single file uploaded with the key file.
+
+Multer provides two primary storage options:
+1) Disk Storage: Stores files locally on the server.
+2) Memory Storage: Stores files in memory as Buffer objects (useful for processing files in memory).
+
