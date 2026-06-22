@@ -1,0 +1,546 @@
+
+## 1. SQL vs NoSQL Databases
+
+### SQL Databases
+
+SQL databases are relational databases. They store data in tables, with rows and columns.
+
+Example:
+
+| id | name | email                                       |
+| -- | ---- | ------------------------------------------- |
+| 1  | Asha | [asha@example.com](mailto:asha@example.com) |
+| 2  | Ravi | [ravi@example.com](mailto:ravi@example.com) |
+
+Common SQL databases:
+
+* MySQL
+* PostgreSQL
+* SQLite
+* Oracle
+* SQL Server
+
+
+---
+
+## NoSQL Databases
+
+NoSQL databases are non-relational databases. They do not always store data in tables.
+
+Common NoSQL databases:
+
+* MongoDB
+* Redis
+* Cassandra
+* DynamoDB
+* CouchDB
+* Firebase Firestore
+
+NoSQL databases can store data in different formats.
+
+
+
+
+
+
+
+
+
+
+# 2. Database Connection Patterns
+
+A database connection is a communication link between your application and your database.
+
+For example:
+
+```text
+Node.js app → PostgreSQL database
+```
+
+or
+
+```text
+Java app → MySQL database
+```
+
+Opening a database connection is expensive because it requires:
+
+* Network communication
+* Authentication
+* Memory allocation
+* Database session setup
+
+So apps need good connection patterns.
+
+---
+
+## Pattern 1: Single Connection
+
+The app uses one database connection.
+
+App → One DB connection → Database
+
+### Problems
+
+If many users send requests at the same time, one connection becomes a bottleneck.
+
+
+
+---
+
+## Pattern 2: Connection Per Request
+
+Each request creates a new database connection.
+
+Request 1 → New DB connection
+Request 2 → New DB connection
+Request 3 → New DB connection
+
+### Problem
+
+Creating and closing connections repeatedly is slow.
+
+
+---
+
+## Pattern 3: Shared Connection
+
+The app creates one shared connection and reuses it.
+
+App → Shared connection → Database
+
+Better than opening a new connection each time, but it can still become overloaded.
+
+
+
+---
+
+## Pattern 4: Connection Pooling
+
+This is the most common production pattern.
+
+App → Connection Pool → Database
+
+A pool keeps multiple database connections ready to use.
+
+Example:
+Connection Pool:
+[conn1, conn2, conn3, conn4, conn5]
+
+
+When a request comes in:
+1. App borrows a connection
+2. App runs query
+3. App returns connection to pool
+
+The connection is not destroyed. It is reused.
+
+---
+
+
+
+
+
+
+
+
+
+# 3. Connection Pooling
+
+Connection pooling means maintaining a group of reusable database connections.
+
+```text
+Borrow connection
+Run query
+Return connection
+```
+
+This improves performance a lot.
+
+---
+
+Example:
+
+max connections = 10
+This means your app will not open more than 10 database connections.
+
+
+### Minimum pool size
+
+The smallest number of connections kept ready.
+min = 2
+The app keeps at least 2 connections open.
+
+
+### Maximum pool size
+
+The largest number of connections allowed.
+max = 10
+The app can use up to 10 connections at once.
+
+
+### Idle timeout
+
+How long an unused connection stays open.
+idleTimeout = 30000 ms
+If a connection is idle for 30 seconds, it may be closed.
+
+
+### Connection timeout
+
+How long the app waits for a connection.
+connectionTimeout = 5000 ms
+
+If no connection is available within 5 seconds, the request fails.
+
+---
+
+
+
+
+
+
+
+
+
+
+# 4. Database Configuration
+
+Database configuration means the settings your app uses to connect to the database.
+
+Common configuration values:
+
+DB_HOST
+DB_PORT
+DB_NAME
+DB_USER
+DB_PASSWORD
+DB_SSL
+DB_POOL_MAX
+
+Example:
+
+const dbConfig = {
+  host: "localhost",
+  port: 5432,
+  database: "school_db",
+  user: "postgres",
+  password: "password"
+};
+
+
+## Common database configuration fields
+
+### Host
+
+The address of the database server.
+
+```text
+localhost
+```
+
+or
+
+```text
+db.example.com
+```
+
+### Port
+
+The port number used by the database.
+
+
+### Database name
+
+The specific database your app uses.
+school_db
+
+### Username and password
+
+Used for authentication.
+
+user: postgres
+password: secret123
+
+
+
+### SSL
+
+SSL encrypts communication between your app and the database.
+In production, SSL is often required.
+
+ssl: true
+or:
+ssl: {
+  rejectUnauthorized: false
+}
+
+---
+
+
+
+
+
+
+
+
+
+
+# 5. Environment-based Configuration
+
+Environment-based configuration means using different settings for different environments.
+
+Common environments:
+
+development
+testing
+staging
+production
+
+
+## Development environment
+
+Used while coding locally.
+
+Example:
+DB_HOST=localhost
+DB_NAME=myapp_dev
+DB_USER=dev_user
+
+The database may run on your own computer.
+
+
+## Testing environment
+
+Used for automated tests.
+
+Example:
+DB_NAME=myapp_test
+
+Testing should use a separate database so test data does not damage real data.
+
+
+
+## Staging environment
+
+Staging is like a practice version of production.
+
+Used before releasing changes.
+
+Example:
+
+DB_HOST=staging-db.example.com
+DB_NAME=myapp_staging
+
+
+
+## Production environment
+
+This is the real app used by real users.
+
+Example:
+
+DB_HOST=prod-db.example.com
+DB_NAME=myapp_prod
+DB_SSL=true
+
+Production should be secure, stable, and carefully monitored.
+
+
+
+
+**Query Methods
+
+1) find():- Return all the matching documents
+Example : const users = await User.find();
+
+2) findOne() :- Return the first matching documents
+Example : const user = await User.findOne({ email: "john@example.com" });
+
+3) findById() :- Find the document by its Id
+Example : const user = await User.findById("665f1234567890abcdef123");
+
+findByIdAndUpdate : Finds a document by its _id and updates it.
+
+findByIdAndDelete : Finds a document by its _id and deletes it.
+
+deleteOne() : Deletes the first document that matches the filter.
+
+deleteMany() : Deletes all documents matching the filter.
+
+updateOne() : Updates the first matching document.
+
+updateMany() : Updates all matching documents.
+
+findOneAndUpdate() : Finds one document, updates it, and returns the document.
+
+findOneAndDelete() : Finds one document, deletes it, and returns the deleted document.
+
+findOneAndReplace() : Finds one document and replaces the entire document (except _id).
+
+
+
+4) countocuments() :- count matching documents
+example : 
+const totalUsers = await User.countDocuments();
+
+const activeUsers = await User.countDocuments({
+  status: "active"
+});
+
+5) exists() : check if document exists or not
+Example : 
+const exists = await User.exists({
+  email: "john@example.com"
+});
+
+6) select() :- return only specific fields
+Example :
+const users = await User.find()
+  .select("-password");
+
+return the all fields excluding password
+
+7) sort() :- sort the result
+const users = await User.find()
+  .sort({ createdAt: -1 }); 
+  
+return the newest first
+
+
+8) limit() :- limit the number of document
+   skip() :- skip the document
+
+example : 
+const page = 2;
+const limit = 10;
+
+const users = await User.find()
+  .skip((page - 1) * limit)
+  .limit(limit);
+
+
+9) populate() :- Load the referenced documents
+Example : userSchema
+const userSchema = new mongoose.Schema({
+  name: String
+});
+
+postSchma
+
+const postSchema = new mongoose.Schema({
+  title: String,
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
+});
+
+Query
+
+const posts = await Post.find()
+  .populate("author");
+
+
+** Query Operators
+
+1) $gt :- greater than
+example :
+await User.find({
+  age: { $gt: 18 }
+});
+
+2) $lt :- less than
+example:
+await User.find({
+  age : { $lt : 30}
+})
+
+4) $in : In
+example : Find products where the price is either 3, 6, or 9:
+Product.find({ price: { $in: [3, 6, 9] } })   
+
+5) $nin :- not in
+example : Find products where the price is NOT 5.23, 3, or 6:
+Product.find({ price: { $nin: [5.23, 3, 6] } })   
+
+6) $and : Logical and
+Selects documents that satisfy all specified conditions. 
+example :  Find employees who are a "Store Associate" AND are between 20 and 30 years old:
+
+Employees.find({
+  $and: [
+    { job_role: "Store Associate" },
+    { emp_age: { $gte: 20, $lte: 30 } }
+  ]
+})   
+
+
+7) $or : Logical or
+Selects documents that satisfy at least one of the specified conditions
+
+example : Find employees who are either a "Senior Cashier" OR a "Store Manager"
+
+Employees.find({
+  $or: [
+    { job_role: "Senior Cashier" },
+    { job_role: "Store Manager" }
+  ]
+})   
+
+
+
+
+
+**Aggreagation pipeline
+It allows you to process, transform, analyze, and summarize data through a sequence of stages
+
+1) $match : Filter Documents
+
+2) $project : Select or Modify Fields
+
+3) $group : Group Similar Records
+
+4) $sort : Arrange Documents
+
+5) $addFields : Add New Fields
+
+6) $lookup : Join Two Collections
+
+{
+   $lookup:
+      {
+         from: <foreign collection>,
+         localField: <field from local collection's documents>,
+         foreignField: <field from foreign collection's documents>,
+         as: <output array field>
+      }
+}
+
+
+
+
+** Indexing :-
+
+Indexing in MongoDB is a technique that creates a fast lookup structure for specific fields, allowing MongoDB to find data quickly without scanning every document in the collection.
+
+
+
+
+**Schema validation
+
+1) required : true
+
+2) unique : true
+
+3) min : 18
+
+4) max : 100
+
+5) minlength : 3
+
+6) maxlength : 30
+
+7) enum : ["admin" , "user"]
+
+8) default : "user"
